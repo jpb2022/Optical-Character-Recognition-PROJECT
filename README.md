@@ -1,62 +1,208 @@
-# Optical-Character-Recognition
-
-## Overview
-This project advances Optical Character Recognition (OCR) technology by extracting textual content from images through state-of-the-art machine learning and computer vision techniques. The goal is to accurately convert written text into a machine-readable format, facilitating a wide range of applications from document digitization to automated data entry.
-
-The OCR process encompasses several crucial steps, including image preprocessing to enhance text readability, feature extraction to identify distinctive attributes, and text recognition where the actual conversion takes place.
-
-In this project, we explore three core machine learning models, each offering unique strengths to the OCR task:
-
-- **Random Forest**: An ensemble learning method for classification that operates by constructing a multitude of decision trees at training time and outputting the class that is the mode of the classes (classification) of the individual trees. Renowned for its accuracy and ability to run efficiently on large datasets.
-
-- **K-Nearest Neighbors (KNN)**: A simple, intuitive model that classifies texts by a majority vote of its neighbors, with the object being assigned to the class most common among its k nearest neighbors. KNN is especially useful for its ease of implementation and strong performance on a variety of datasets.
-
-- **Support Vector Machine (SVM)**: A powerful, versatile machine learning model capable of performing linear or nonlinear classification, regression, and even outlier detection. It is particularly suited for complex text recognition tasks with high-dimensional data.
-
-- **Gaussian Mixture Model (GMM)**: A probabilistic model that assumes all the data points are generated from a mixture of a finite number of Gaussian distributions with unknown parameters. GMM is especially adept at handling cases where the data involves multiple subpopulations, each of which can be modeled by a Gaussian distribution. This model is beneficial for OCR when dealing with varied text styles and densities, as it can adaptively segment different text features based on their statistical properties.
 
 
-The dataset fueling our models' training and evaluation is the Standard OCR Dataset, which can be found on Kaggle: [Standard OCR Dataset](https://www.kaggle.com/datasets/preatcher/standard-ocr-dataset). This dataset provides a robust foundation for developing and testing OCR technologies.
+---
 
-## Preprocessing
-The preprocessing stage is critical in the OCR pipeline, ensuring that the input images are optimized for text recognition. This process typically includes the following steps:
+# 🧠 Optical Character Recognition (OCR) using Machine Learning
 
-- **Image Loading**: Images are loaded into the system for processing. This is the first step in preparing the data for analysis.
+## 📌 Project Overview
 
-- **Grayscale Conversion**: Color images are converted to grayscale to reduce complexity, focusing on the intensity of pixels rather than color information, which is essential for the subsequent steps.
+This project focuses on building an end-to-end **Optical Character Recognition (OCR)** system using classical **machine learning and computer vision techniques**. The objective is to accurately extract printed characters from images and convert them into machine-readable text, enabling applications such as:
 
-- **Noise Reduction**: Various techniques, such as Gaussian blur or median filtering, are applied to reduce image noise. This step is crucial for improving the accuracy of the text detection process.
+* 📄 Document digitization
+* 🏦 Automated data entry
+* 📚 Educational content processing
+* 🧾 Form and invoice analysis
 
-- **Thresholding**: To further simplify the image and highlight the text, thresholding techniques are used to create a binary image where the text is separated from the background.
+The project is designed and implemented by **Jitendra Kumar Gupta (M.Tech, IIT Kanpur)** as part of hands-on learning in **Machine Learning, Computer Vision, and Pattern Recognition**.
 
-- **Feature Extraction**: Before feeding the images into the machine learning models, relevant features are extracted. This can include edges, contours, or specific patterns that are characteristic of the text to be recognized.
+---
 
-These preprocessing steps are designed to enhance the quality and clarity of the text in the images, significantly improving the performance of the OCR models.
+## 🔍 OCR Pipeline
 
-## Installation
-To set up the project environment, follow these steps:
-1. Clone the project repository to your local machine.
-   
-        git clone https://github.com/premkjain/Optical-Character-Recognition.git
-        
-2. Open a terminal and navigate to the project directory.
-3. Ensure Python is installed on your system. If not, download and install it from [python.org](https://www.python.org/downloads/).
-4. Install the required Python dependencies.
+The complete OCR workflow consists of the following stages:
 
-## Usage
-Execute the `main.ipynb` notebook to walk through the OCR process. This notebook guides you through exploratory data analysis, model training, evaluation, and making predictions. It serves as the entry point for understanding and interacting with the OCR system.
+1. **Image Acquisition**
+   Load character images from the dataset.
 
-## Models
-Within the `Models` directory, you will find notebooks detailing the implementation and usage of specific OCR models, including Random Forest, KNN, SVM and GMM. These documents offer insights into model selection, training, and performance evaluation.
+2. **Image Preprocessing**
+   Improve image quality and isolate text:
 
-## Basic EDA
-The `Basic_EDA.ipynb` notebook performs an exploratory analysis of the OCR dataset. It illustrates the dataset's structure, visualizes sample images, and outlines initial preprocessing steps, providing a foundational understanding of the data handling process.
+   * Grayscale conversion
+   * Noise reduction (Gaussian / Median filtering)
+   * Image thresholding (binary conversion)
+   * Normalization and resizing
 
-## Documentation
-For a detailed overview of the project, including its objectives, methodologies, and key findings, refer to the `Brief_Documentation.pdf`. This document is essential for gaining an in-depth understanding of the project's implementation and outcomes.
+3. **Feature Extraction**
+   Convert image pixels into feature vectors suitable for ML models:
 
-## Presentation
-The project's findings and insights are further disseminated through presentations stored in the `Presentation` folder. These materials are useful for sharing the project's success and methodologies with a broader audience.
+   * Flattened pixel intensities
+   * Edge-based structural features (optional)
 
-## License
-This project is licensed under the MIT License - see the `LICENSE` file for details.
+4. **Model Training & Classification**
+   Supervised learning models are trained to classify characters.
+
+5. **Evaluation & Prediction**
+   Performance is measured using accuracy and confusion matrices.
+
+---
+
+## 🤖 Machine Learning Models Implemented
+
+This project compares multiple ML algorithms to evaluate OCR performance:
+
+### ✅ Random Forest Classifier
+
+* Ensemble of decision trees
+* Robust to noise and overfitting
+* Performs well on structured pixel features
+
+### ✅ K-Nearest Neighbors (KNN)
+
+* Distance-based classification
+* Simple and interpretable
+* Useful baseline for OCR tasks
+
+### ✅ Support Vector Machine (SVM)
+
+* Effective in high-dimensional spaces
+* Kernel-based classification for complex boundaries
+* Strong generalization capability
+
+### ✅ Gaussian Mixture Model (GMM)
+
+* Probabilistic clustering-based approach
+* Useful for modeling character shape distributions
+* Helps analyze class overlap and uncertainty
+
+Each model is implemented and evaluated independently for comparison.
+
+---
+
+## 📊 Dataset
+
+The project uses the **Standard OCR Dataset** from Kaggle:
+
+🔗 Dataset Link:
+[https://www.kaggle.com/datasets/preatcher/standard-ocr-dataset](https://www.kaggle.com/datasets/preatcher/standard-ocr-dataset)
+
+### Dataset Highlights:
+
+* Grayscale character images
+* Multiple classes (alphabets and digits)
+* Suitable for classical ML-based OCR pipelines
+
+---
+
+## 📁 Project Structure
+
+```
+Optical-Character-Recognition/
+│
+├── main.ipynb                # End-to-end OCR pipeline
+├── Basic_EDA.ipynb           # Dataset exploration and visualization
+│
+├── Models/
+│   ├── Random_Forest.ipynb
+│   ├── KNN.ipynb
+│   ├── SVM.ipynb
+│   └── GMM.ipynb
+│
+├── Presentation/             # Project slides
+├── Brief_Documentation.pdf   # Detailed technical report
+└── README.md
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+### Step 1: Clone Repository
+
+```bash
+git clone https://github.com/jpb2022/Optical-Character-Recognition-PROJECT.git
+cd Optical-Character-Recognition-PROJECT
+```
+
+### Step 2: Install Dependencies
+
+Make sure Python 3.8+ is installed.
+
+```bash
+pip install numpy pandas matplotlib seaborn scikit-learn opencv-python
+```
+
+*(You may also use Anaconda for easier package management.)*
+
+---
+
+## ▶️ How to Run
+
+1. Open Jupyter Notebook:
+
+   ```bash
+   jupyter notebook
+   ```
+2. Start with:
+
+   * `Basic_EDA.ipynb` → Understand dataset & preprocessing
+   * `main.ipynb` → Full OCR pipeline
+3. Explore individual models inside the `Models/` folder.
+
+---
+
+## 📈 Evaluation Metrics
+
+Model performance is evaluated using:
+
+* ✔ Accuracy
+* ✔ Confusion Matrix
+* ✔ Class-wise Prediction Analysis
+
+This allows comparison between different classifiers and helps identify misclassified characters.
+
+---
+
+## 🚀 Key Learning Outcomes
+
+* Practical OCR pipeline development
+* Image preprocessing for ML readiness
+* Feature engineering from image data
+* Comparative analysis of ML classifiers
+* Understanding limitations of classical OCR vs Deep Learning
+
+---
+
+## 🔮 Future Improvements
+
+Planned enhancements include:
+
+* 🔹 CNN-based Deep Learning OCR using TensorFlow / PyTorch
+* 🔹 Sequence-based recognition using CRNN + CTC Loss
+* 🔹 Word-level text detection using OpenCV + EAST
+* 🔹 Integration with real scanned documents
+* 🔹 Deployment as a web-based OCR API
+
+---
+
+## 👨‍💻 Author
+
+**Jitendra Kumar Gupta**
+🎓 M.Tech — Industrial & Management Engineering (Data Science), IIT Kanpur
+🎓 B.Tech — Mechanical Engineering, NIT Surat
+💼 ML Engineer | Data Scientist | Educator
+
+**Skills:**
+Machine Learning, Deep Learning, Computer Vision, Python, SQL, Power BI, Generative AI, LLMs
+
+📧 Email: [jitendraguptaaur@gmail.com](mailto:jitendraguptaaur@gmail.com)
+🔗 GitHub: [https://github.com/jpb2022](https://github.com/jpb2022)
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License** — free to use, modify, and distribute with attribution.
+
+---
+
+
